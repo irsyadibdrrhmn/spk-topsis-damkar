@@ -16,8 +16,8 @@
                     </x-nav-link>
 
                     @if(auth()->user()->isAdmin() || auth()->user()->isKepalaDinas())
-                        <x-nav-link :href="route('ppk.index')" :active="request()->routeIs('ppk.*')">
-                            {{ __('Data PPK') }}
+                        <x-nav-link :href="route('personil.index')" :active="request()->routeIs('personil.*')">
+                            {{ __('Data Personil') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('criteria.index')" :active="request()->routeIs('criteria.*')">
@@ -34,7 +34,7 @@
                     @endif
 
                     @if(auth()->user()->isPPK())
-                        <x-nav-link :href="route('ppk.performance')" :active="request()->routeIs('ppk.performance')">
+                        <x-nav-link :href="route('personil.performance')" :active="request()->routeIs('personil.performance')">
                             {{ __('Kinerja Saya') }}
                         </x-nav-link>
                     @endif
@@ -96,8 +96,8 @@
             </x-responsive-nav-link>
 
             @if(auth()->user()->isAdmin() || auth()->user()->isKepalaDinas())
-                <x-responsive-nav-link :href="route('ppk.index')" :active="request()->routeIs('ppk.*')">
-                    {{ __('Data PPK') }}
+                <x-responsive-nav-link :href="route('personil.index')" :active="request()->routeIs('personil.*')">
+                    {{ __('Data Personil') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('criteria.index')" :active="request()->routeIs('criteria.*')">
@@ -114,7 +114,7 @@
             @endif
 
             @if(auth()->user()->isPPK())
-                <x-responsive-nav-link :href="route('ppk.performance')" :active="request()->routeIs('ppk.performance')">
+                <x-responsive-nav-link :href="route('personil.performance')" :active="request()->routeIs('personil.performance')">
                     {{ __('Kinerja Saya') }}
                 </x-responsive-nav-link>
             @endif
