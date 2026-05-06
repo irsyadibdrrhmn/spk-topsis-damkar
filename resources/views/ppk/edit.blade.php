@@ -9,7 +9,7 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <form action="{{ route('ppk.update', $ppk) }}" method="POST">
+                    <form action="{{ route('personil.update', $ppk) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="flex items-center justify-end gap-3">
-                            <a href="{{ route('ppk.index') }}" class="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-400 dark:hover:bg-gray-500 transition">
+                            <a href="{{ route('personil.index') }}" class="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-400 dark:hover:bg-gray-500 transition">
                                 Batal
                             </a>
                             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">

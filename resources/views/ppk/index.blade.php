@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Data Tenaga PPK') }}
             </h2>
-            <a href="{{ route('ppk.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">
+            <a href="{{ route('personil.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                 </svg>
@@ -59,8 +59,8 @@
                                         {{ $ppk->email }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="{{ route('ppk.edit', $ppk) }}" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-600 mr-3">Edit</a>
-                                        <form action="{{ route('ppk.destroy', $ppk) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus data PPK ini?')">
+                                        <a href="{{ route('personil.edit', $ppk) }}" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-600 mr-3">Edit</a>
+                                        <form action="{{ route('personil.destroy', $ppk) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus data PPK ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-600">Hapus</button>
@@ -70,7 +70,7 @@
                                 @empty
                                 <tr>
                                     <td colspan="5" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
-                                        Belum ada data tenaga PPK. <a href="{{ route('ppk.create') }}" class="text-blue-600 hover:text-blue-900">Tambah data</a>
+                                        Belum ada data tenaga PPK. <a href="{{ route('personil.create') }}" class="text-blue-600 hover:text-blue-900">Tambah data</a>
                                     </td>
                                 </tr>
                                 @endforelse
