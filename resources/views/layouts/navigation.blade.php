@@ -15,7 +15,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    @if(auth()->user()->isAdmin() || auth()->user()->isKepalaDinas())
+                    @if(auth()->user()->isAdmin() || auth()->user()->isPimpinan())
                         <x-nav-link :href="route('personil.index')" :active="request()->routeIs('personil.*')">
                             {{ __('Data Personil') }}
                         </x-nav-link>
@@ -33,7 +33,7 @@
                         </x-nav-link>
                     @endif
 
-                    @if(auth()->user()->isPPK())
+                    @if(auth()->user()->isPersonil())
                         <x-nav-link :href="route('personil.performance')" :active="request()->routeIs('personil.performance')">
                             {{ __('Kinerja Saya') }}
                         </x-nav-link>
