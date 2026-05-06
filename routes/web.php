@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CriteriaController;
-use App\Http\Controllers\PPKController;
+use App\Http\Controllers\PersonilController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\TopsisController;
 use Illuminate\Support\Facades\Route;
@@ -18,10 +18,10 @@ Route::middleware('auth')->group(function () {
         
         if ($user->isAdmin()) {
             return view('dashboard.admin');
-        } elseif ($user->isKepalaDinas()) {
-            return view('dashboard.kepala-dinas');
+        } elseif ($user->isPimpinan()) {
+            return view('dashboard.pimpinan');
         } else {
-            return view('dashboard.ppk');
+            return view('dashboard.personil');
         }
     })->name('dashboard');
 
@@ -30,13 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Admin & Kepala Dinas Routes
-    Route::middleware(['role:admin,kepala_dinas'])->group(function () {
+    // Admin Routes
+    Route::middleware(['role:admin'])->group(function () {
         // Criteria Management
         Route::resource('criteria', CriteriaController::class);
         
-        // PPK Management
-        Route::resource('ppk', PPKController::class);
+        // Personil Management
+        Route::resource('personil', PersonilController::class);
         
         // Evaluation Management
         Route::get('evaluations', [EvaluationController::class, 'index'])->name('evaluations.index');
@@ -50,8 +50,15 @@ Route::middleware('auth')->group(function () {
         Route::get('topsis/ranking', [TopsisController::class, 'ranking'])->name('topsis.ranking');
     });
 
-    // PPK Routes (View Only)
-    Route::middleware(['role:ppk'])->group(function () {
+    // Pimpinan Routes (View Only)
+    Route::middleware(['role:pimpinan'])->group(function () {
+        // View recommendations and rankings
+        Route::get('topsis/ranking', [TopsisController::class, 'ranking'])->name('topsis.ranking');
+        Route::get('topsis', [TopsisController::class, 'index'])->name('topsis.index');
+    });
+
+    // Personil Routes (View Only)
+    Route::middleware(['role:personil'])->group(function () {
         Route::get('my-performance', function () {
             $user = auth()->user();
             $periods = \App\Models\Evaluation::where('user_id', $user->id)
@@ -64,8 +71,8 @@ Route::middleware('auth')->group(function () {
                 ->orderBy('period', 'desc')
                 ->get();
             
-            return view('ppk.performance', compact('user', 'periods', 'results'));
-        })->name('ppk.performance');
+            return view('personil.performance', compact('user', 'periods', 'results'));
+        })->name('personil.performance');
     });
 });
 

@@ -20,36 +20,36 @@ class TopsisController extends Controller
             ->orderBy('period', 'desc')
             ->pluck('period');
 
-        $ppks = User::where('role', 'ppk')->get();
+        $personil = User::where('role', 'personil')->get();
         $criteria = Criteria::all();
 
         // Check if evaluations exist for this period
         $hasEvaluations = Evaluation::where('period', $period)->exists();
 
         if (!$hasEvaluations) {
-            return view('topsis.index', compact('period', 'periods', 'ppks', 'criteria'))
+            return view('topsis.index', compact('period', 'periods', 'personil', 'criteria'))
                 ->with('warning', 'Belum ada data penilaian untuk periode ini');
         }
 
         // Build decision matrix
         $matrix = [];
-        foreach ($ppks as $ppk) {
+        foreach ($personil as $p) {
             foreach ($criteria as $criterion) {
-                $eval = Evaluation::where('user_id', $ppk->id)
+                $eval = Evaluation::where('user_id', $p->id)
                     ->where('criteria_id', $criterion->id)
                     ->where('period', $period)
                     ->first();
-                $matrix[$ppk->id][$criterion->id] = $eval ? $eval->score : 0;
+                $matrix[$p->id][$criterion->id] = $eval ? $eval->score : 0;
             }
         }
 
         // TOPSIS Calculation
-        $topsisData = $this->calculateTOPSIS($matrix, $criteria, $ppks);
+        $topsisData = $this->calculateTOPSIS($matrix, $criteria, $personil);
 
         return view('topsis.index', compact(
             'period',
             'periods',
-            'ppks',
+            'personil',
             'criteria',
             'matrix',
             'topsisData'
@@ -65,7 +65,7 @@ class TopsisController extends Controller
             ->orderBy('period', 'desc')
             ->pluck('period');
 
-        $ppks = User::where('role', 'ppk')->get();
+        $personil = User::where('role', 'personil')->get();
         $criteria = Criteria::all();
 
         $hasEvaluations = Evaluation::where('period', $period)->exists();
@@ -77,18 +77,18 @@ class TopsisController extends Controller
 
         // Build decision matrix
         $matrix = [];
-        foreach ($ppks as $ppk) {
+        foreach ($personil as $p) {
             foreach ($criteria as $criterion) {
-                $eval = Evaluation::where('user_id', $ppk->id)
+                $eval = Evaluation::where('user_id', $p->id)
                     ->where('criteria_id', $criterion->id)
                     ->where('period', $period)
                     ->first();
-                $matrix[$ppk->id][$criterion->id] = $eval ? $eval->score : 0;
+                $matrix[$p->id][$criterion->id] = $eval ? $eval->score : 0;
             }
         }
 
         // Calculate TOPSIS
-        $topsisData = $this->calculateTOPSIS($matrix, $criteria, $ppks);
+        $topsisData = $this->calculateTOPSIS($matrix, $criteria, $personil);
         
         // Save results
         $this->saveResults($topsisData['ranking'], $period);

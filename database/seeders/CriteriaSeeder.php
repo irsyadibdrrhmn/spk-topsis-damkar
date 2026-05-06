@@ -21,24 +21,38 @@ class CriteriaSeeder extends Seeder
     $criteria = [
         [
             'code' => 'C1',
-            'name' => 'Kehadiran',
-            'weight' => 0.50,
+            'name' => 'Pangkat/Golongan',
+            'weight' => 0.15,
             'type' => 'benefit',
-            'description' => 'Penilaian berdasarkan Absensi, Apel pagi, dan Lembur',
+            'description' => 'Tingkat pangkat atau golongan personil Pemadam Kebakaran',
         ],
         [
             'code' => 'C2',
-            'name' => 'Kinerja Pelayanan',
-            'weight' => 0.30,
+            'name' => 'Tingkat Pendidikan',
+            'weight' => 0.20,
             'type' => 'benefit',
-            'description' => 'Penilaian berdasarkan Pencetakan Akte, KTP, dan KK',
+            'description' => 'Jenjang pendidikan formal yang ditempuh',
         ],
         [
             'code' => 'C3',
-            'name' => 'Pelatihan',
+            'name' => 'Umur',
             'weight' => 0.20,
             'type' => 'benefit',
-            'description' => 'Jumlah pelatihan yang diikuti dalam periode penilaian',
+            'description' => 'Usia personil pada saat penilaian',
+        ],
+        [
+            'code' => 'C4',
+            'name' => 'Masa Kerja',
+            'weight' => 0.25,
+            'type' => 'benefit',
+            'description' => 'Lamanya masa kerja sebagai personil Pemadam Kebakaran',
+        ],
+        [
+            'code' => 'C5',
+            'name' => 'Penilaian Kinerja',
+            'weight' => 0.20,
+            'type' => 'benefit',
+            'description' => 'Hasil evaluasi kinerja dalam periode penilaian',
         ],
     ];
 

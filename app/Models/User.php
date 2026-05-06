@@ -49,13 +49,28 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isPPK()
+    public function isPersonil()
     {
-        return $this->role === 'ppk';
+        return $this->role === 'personil';
     }
 
-    public function isKepalaDinas()
+    public function isPimpinan()
     {
-        return $this->role === 'kepala_dinas';
+        return $this->role === 'pimpinan';
+    }
+
+    public function canManageData()
+    {
+        return $this->isAdmin();
+    }
+
+    public function canViewRecommendation()
+    {
+        return $this->isPimpinan() || $this->isAdmin();
+    }
+
+    public function canViewRanking()
+    {
+        return $this->isPimpinan() || $this->isAdmin();
     }
 }

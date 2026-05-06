@@ -9,19 +9,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-                <!-- Total PPK -->
+                <!-- Total Personil -->
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                            <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
                                 <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Total PPK</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Total Personil</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                                    {{ \App\Models\User::where('role', 'ppk')->count() }}
+                                    {{ \App\Models\User::where('role', 'personil')->count() }}
                                 </p>
                             </div>
                         </div>
