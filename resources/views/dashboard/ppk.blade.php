@@ -148,7 +148,7 @@
             </div>
 
             <!-- Quick Link -->
-            <a href="{{ route('ppk.performance') }}" class="block p-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg hover:shadow-xl transition">
+            <a href="{{ route('personil.performance') }}" class="block p-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg hover:shadow-xl transition">
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">Lihat Detail Kinerja</h4>

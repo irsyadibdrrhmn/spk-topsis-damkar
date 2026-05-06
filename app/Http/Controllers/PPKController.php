@@ -38,7 +38,7 @@ class PPKController extends Controller
             'role' => 'ppk',
         ]);
 
-        return redirect()->route('ppk.index')->with('success', 'Data Tenaga PPK berhasil ditambahkan');
+        return redirect()->route('personil.index')->with('success', 'Data Tenaga PPK berhasil ditambahkan');
     }
 
     public function edit(User $ppk)
@@ -64,12 +64,12 @@ class PPKController extends Controller
 
         $ppk->update($data);
 
-        return redirect()->route('ppk.index')->with('success', 'Data Tenaga PPK berhasil diperbarui');
+        return redirect()->route('personil.index')->with('success', 'Data Tenaga PPK berhasil diperbarui');
     }
 
     public function destroy(User $ppk)
     {
         $ppk->delete();
-        return redirect()->route('ppk.index')->with('success', 'Data Tenaga PPK berhasil dihapus');
+        return redirect()->route('personil.index')->with('success', 'Data Tenaga PPK berhasil dihapus');
     }
 }
