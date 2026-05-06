@@ -15,9 +15,9 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    @if(auth()->user()->isAdmin() || auth()->user()->isKepalaDinas())
-                        <x-nav-link :href="route('ppk.index')" :active="request()->routeIs('ppk.*')">
-                            {{ __('Data PPK') }}
+                    @if(auth()->user()->isAdmin() || auth()->user()->isPimpinan())
+                        <x-nav-link :href="route('personil.index')" :active="request()->routeIs('personil.*')">
+                            {{ __('Data Personil') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('criteria.index')" :active="request()->routeIs('criteria.*')">
@@ -33,8 +33,8 @@
                         </x-nav-link>
                     @endif
 
-                    @if(auth()->user()->isPPK())
-                        <x-nav-link :href="route('ppk.performance')" :active="request()->routeIs('ppk.performance')">
+                    @if(auth()->user()->isPersonil())
+                        <x-nav-link :href="route('personil.performance')" :active="request()->routeIs('personil.performance')">
                             {{ __('Kinerja Saya') }}
                         </x-nav-link>
                     @endif
@@ -57,7 +57,7 @@
 
                     <x-slot name="content">
                         <div class="px-4 py-2 text-xs text-gray-400">
-                            {{ auth()->user()->role === 'admin' ? 'Administrator' : (auth()->user()->role === 'kepala_dinas' ? 'Kepala Dinas' : 'Tenaga PPK') }}
+                            {{ auth()->user()->role === 'admin' ? 'Administrator' : (auth()->user()->role === 'pimpinan' ? 'Pimpinan' : 'Personil') }}
                         </div>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
@@ -95,9 +95,9 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            @if(auth()->user()->isAdmin() || auth()->user()->isKepalaDinas())
-                <x-responsive-nav-link :href="route('ppk.index')" :active="request()->routeIs('ppk.*')">
-                    {{ __('Data PPK') }}
+            @if(auth()->user()->isAdmin() || auth()->user()->isPimpinan())
+                <x-responsive-nav-link :href="route('personil.index')" :active="request()->routeIs('personil.*')">
+                    {{ __('Data Personil') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('criteria.index')" :active="request()->routeIs('criteria.*')">
@@ -113,8 +113,8 @@
                 </x-responsive-nav-link>
             @endif
 
-            @if(auth()->user()->isPPK())
-                <x-responsive-nav-link :href="route('ppk.performance')" :active="request()->routeIs('ppk.performance')">
+            @if(auth()->user()->isPersonil())
+                <x-responsive-nav-link :href="route('personil.performance')" :active="request()->routeIs('personil.performance')">
                     {{ __('Kinerja Saya') }}
                 </x-responsive-nav-link>
             @endif
