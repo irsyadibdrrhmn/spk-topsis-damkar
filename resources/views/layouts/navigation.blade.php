@@ -95,7 +95,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            @if(auth()->user()->isAdmin() || auth()->user()->isKepalaDinas())
+            @if(auth()->user()->isAdmin() || auth()->user()->isPimpinan())
                 <x-responsive-nav-link :href="route('personil.index')" :active="request()->routeIs('personil.*')">
                     {{ __('Data Personil') }}
                 </x-responsive-nav-link>
