@@ -57,7 +57,7 @@
 
                     <x-slot name="content">
                         <div class="px-4 py-2 text-xs text-gray-400">
-                            {{ auth()->user()->role === 'admin' ? 'Administrator' : (auth()->user()->role === 'kepala_dinas' ? 'Kepala Dinas' : 'Tenaga PPK') }}
+                            {{ auth()->user()->role === 'admin' ? 'Administrator' : (auth()->user()->role === 'pimpinan' ? 'Pimpinan' : 'Personil') }}
                         </div>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
