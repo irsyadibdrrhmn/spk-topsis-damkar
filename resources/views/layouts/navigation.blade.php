@@ -13,5 +13,13 @@
                 <a href="{{ route('personil.performance') }}" class="{{ request()->routeIs('personil.performance') ? 'sidebar-link sidebar-link-active' : 'sidebar-link text-gray-200' }}">⭐ Kinerja Saya</a>
             @endif
         </div>
+        <div class="mt-8 pt-6 border-t border-white/10">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="w-full text-left sidebar-link text-red-200 hover:text-red-100">
+                    🚪 Logout
+                </button>
+            </form>
+        </div>
     </aside>
 </nav>

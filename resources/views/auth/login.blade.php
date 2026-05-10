@@ -10,7 +10,7 @@
 <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#fff 1px, transparent 1px);background-size: 20px 20px;"></div>
 <div class="glass-card max-w-5xl w-full grid md:grid-cols-2 overflow-hidden">
     <div class="p-10 text-white bg-gradient-to-br from-[#1E1E1E]/90 to-[#B22222]/90">
-        <h1 class="text-3xl font-extrabold mb-4">🚒 SPK TOPSIS DAMKAR</h1>
+        <h1 class="text-3xl font-extrabold mb-4">SPK TOPSIS DAMKAR</h1>
         <p class="text-white/90 leading-relaxed">Sistem Pendukung Keputusan Pemberangkatan Diklat Personil UPT Pemadam Kebakaran Kabupaten Kuningan.</p>
     </div>
     <div class="p-10 bg-white">

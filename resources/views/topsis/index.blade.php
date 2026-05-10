@@ -66,10 +66,10 @@
                             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach($personil as $p)
                                 <tr>
-                                    <td class="px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $personil->name }}</td>
+                                    <td class="px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $p->name }}</td>
                                     @foreach($criteria as $c)
                                         <td class="px-4 py-2 text-center text-sm text-gray-900 dark:text-gray-100">
-                                            {{ number_format($matrix[$personil->id][$c->id], 2) }}
+                                            {{ number_format($matrix[$p->id][$c->id], 2) }}
                                         </td>
                                     @endforeach
                                 </tr>
@@ -105,10 +105,10 @@
                             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach($personil as $p)
                                 <tr>
-                                    <td class="px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $personil->name }}</td>
+                                    <td class="px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $p->name }}</td>
                                     @foreach($criteria as $c)
                                         <td class="px-4 py-2 text-center text-sm text-gray-900 dark:text-gray-100 font-mono">
-                                            {{ number_format($topsisData['normalized'][$personil->id][$c->id], 4) }}
+                                            {{ number_format($topsisData['normalized'][$p->id][$c->id], 4) }}
                                         </td>
                                     @endforeach
                                 </tr>
@@ -147,10 +147,10 @@
                             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach($personil as $p)
                                 <tr>
-                                    <td class="px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $personil->name }}</td>
+                                    <td class="px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $p->name }}</td>
                                     @foreach($criteria as $c)
                                         <td class="px-4 py-2 text-center text-sm text-gray-900 dark:text-gray-100 font-mono">
-                                            {{ number_format($topsisData['weighted'][$personil->id][$c->id], 4) }}
+                                            {{ number_format($topsisData['weighted'][$p->id][$c->id], 4) }}
                                         </td>
                                     @endforeach
                                 </tr>
@@ -230,12 +230,12 @@
                             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                 @foreach($personil as $p)
                                 <tr>
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $personil->name }}</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">{{ $p->name }}</td>
                                     <td class="px-6 py-4 text-center text-sm font-mono text-gray-900 dark:text-gray-100">
-                                        {{ number_format($topsisData['separationPositive'][$personil->id], 6) }}
+                                        {{ number_format($topsisData['separationPositive'][$p->id], 6) }}
                                     </td>
                                     <td class="px-6 py-4 text-center text-sm font-mono text-gray-900 dark:text-gray-100">
-                                        {{ number_format($topsisData['separationNegative'][$personil->id], 6) }}
+                                        {{ number_format($topsisData['separationNegative'][$p->id], 6) }}
                                     </td>
                                 </tr>
                                 @endforeach
