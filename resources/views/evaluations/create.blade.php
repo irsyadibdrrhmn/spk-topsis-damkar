@@ -13,13 +13,13 @@
                         @csrf
 
                         <div class="mb-6">
-                            <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pilih Tenaga PPK *</label>
+                            <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pilih Personil Damkar *</label>
                             <select name="user_id" id="user_id" required
                                 class="w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600">
-                                <option value="">-- Pilih PPK --</option>
-                                @foreach($ppks as $ppk)
-                                    <option value="{{ $ppk->id }}" {{ old('user_id') == $ppk->id ? 'selected' : '' }}>
-                                        {{ $ppk->name }} - {{ $ppk->jabatan }}
+                                <option value="">-- Pilih Personil --</option>
+                                @foreach($personil as $p)
+                                    <option value="{{ $p->id }}" {{ old('user_id') == $p->id ? 'selected' : '' }}>
+                                        {{ $p->name }} - {{ $p->jabatan }}
                                     </option>
                                 @endforeach
                             </select>

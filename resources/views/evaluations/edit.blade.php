@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit Penilaian') }} - {{ $ppk->name }}
+            {{ __('Edit Penilaian') }} - {{ $personil->name }}
         </h2>
     </x-slot>
 
@@ -9,15 +9,15 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <!-- PPK Info -->
+                    <!-- Personil Info -->
                     <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 mb-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-lg">
-                                {{ strtoupper(substr($ppk->name, 0, 2)) }}
+                                {{ strtoupper(substr($personil->name, 0, 2)) }}
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ $ppk->name }}</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">{{ $ppk->jabatan }} - NIP: {{ $ppk->nip }}</p>
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ $personil->name }}</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">{{ $personil->jabatan }} - NIP: {{ $personil->nip }}</p>
                             </div>
                         </div>
                         <div class="mt-3 text-sm text-blue-800 dark:text-blue-200">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('evaluations.update', [$ppk->id, $period]) }}" method="POST">
+                    <form action="{{ route('evaluations.update', [$personil->id, $period]) }}" method="POST">
                         @csrf
                         @method('PUT')
 
