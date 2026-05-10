@@ -45,16 +45,13 @@ Route::middleware('auth')->group(function () {
         Route::get('evaluations/{user}/{period}/edit', [EvaluationController::class, 'edit'])->name('evaluations.edit');
         Route::put('evaluations/{user}/{period}', [EvaluationController::class, 'update'])->name('evaluations.update');
         
-        // TOPSIS Calculation & Ranking
-        Route::get('topsis', [TopsisController::class, 'index'])->name('topsis.index');
-        Route::get('topsis/ranking', [TopsisController::class, 'ranking'])->name('topsis.ranking');
+        
     });
 
-    // Pimpinan Routes (View Only)
-    Route::middleware(['role:pimpinan'])->group(function () {
-        // View recommendations and rankings
-        Route::get('topsis/ranking', [TopsisController::class, 'ranking'])->name('topsis.ranking');
+    // TOPSIS Routes (Admin + Pimpinan)
+    Route::middleware(['role:admin,pimpinan'])->group(function () {
         Route::get('topsis', [TopsisController::class, 'index'])->name('topsis.index');
+        Route::get('topsis/ranking', [TopsisController::class, 'ranking'])->name('topsis.ranking');
     });
 
     // Personil Routes (View Only)

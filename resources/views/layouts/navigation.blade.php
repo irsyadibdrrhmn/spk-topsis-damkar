@@ -113,7 +113,7 @@
                 </x-responsive-nav-link>
             @endif
 
-            @if(auth()->user()->isPPK())
+            @if(auth()->user()->isPersonil())
                 <x-responsive-nav-link :href="route('personil.performance')" :active="request()->routeIs('personil.performance')">
                     {{ __('Kinerja Saya') }}
                 </x-responsive-nav-link>
