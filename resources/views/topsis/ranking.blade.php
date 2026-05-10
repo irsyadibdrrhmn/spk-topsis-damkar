@@ -5,13 +5,13 @@
                 {{ __('Hasil Perangkingan TOPSIS') }}
             </h2>
             <div class="flex gap-2">
-                <a href="{{ route('topsis.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 transition">
+                <a href="{{ route('topsis.index') }}" class="btn-secondary">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                     </svg>
                     Lihat Perhitungan
                 </a>
-                <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 transition">
+                <button onclick="window.print()" class="btn-primary">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
                     </svg>
@@ -21,7 +21,7 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="space-y-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             
             @if(session('warning'))
@@ -31,11 +31,11 @@
             @endif
 
             <!-- Period Filter -->
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="panel">
                 <div class="p-6">
                     <div class="flex items-center gap-4">
                         <label for="period_filter" class="text-sm font-medium text-gray-700 dark:text-gray-300">Periode Penilaian:</label>
-                        <select id="period_filter" onchange="location.href='?period='+this.value" class="rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
+                        <select id="period_filter" onchange="location.href='?period='+this.value" class="input-modern">
                             <option value="{{ date('Y-m') }}" {{ $period == date('Y-m') ? 'selected' : '' }}>
                                 {{ \Carbon\Carbon::parse(date('Y-m') . '-01')->format('F Y') }} (Bulan Ini)
                             </option>
@@ -71,14 +71,14 @@
             </div>
 
             <!-- Complete Ranking Table -->
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="panel">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                         Perangkingan Lengkap - {{ \Carbon\Carbon::parse($period . '-01')->format('F Y') }}
                     </h3>
                     
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                        <table class="table-modern">
                             <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
                                     <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Peringkat</th>
