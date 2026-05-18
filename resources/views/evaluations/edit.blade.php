@@ -47,19 +47,25 @@
             Benefit
         </span>
     </div>
-    <div class="flex items-center gap-4">
-        <input type="number" 
-               name="scores[{{ $criterion->id }}]" 
-               id="score_{{ $criterion->id }}"
-               min="0" 
-               max="100" 
-               step="0.01"
-               value="{{ old('scores.' . $criterion->id) }}"
-               required
-               class="w-32 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600">
-        <span class="text-sm text-gray-500 dark:text-gray-400">
-            / 100 (Bobot: {{ $criterion->weight * 100 }}%)
-        </span>
+    @php
+        $options = $scoreOptions[$criterion->name] ?? [];
+        $selectedScore = old('scores.' . $criterion->id, $evaluations[$criterion->id]->score ?? '');
+    @endphp
+    <div class="space-y-2">
+        <select name="scores[{{ $criterion->id }}]"
+                id="score_{{ $criterion->id }}"
+                required
+                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600">
+            <option value="">-- Pilih kategori nilai {{ $criterion->name }} --</option>
+            @foreach($options as $option)
+                <option value="{{ $option['value'] }}" {{ (string) $selectedScore === (string) $option['value'] ? 'selected' : '' }}>
+                    Nilai {{ $option['value'] }} - {{ $option['label'] }}
+                </option>
+            @endforeach
+        </select>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+            Gunakan pilihan kategori agar tidak perlu mengisi angka manual. (Bobot: {{ $criterion->weight * 100 }}%)
+        </p>
     </div>
     @error('scores.' . $criterion->id)
         <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
